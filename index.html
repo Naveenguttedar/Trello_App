@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trello-App</title>
+  <script src="https://kit.fontawesome.com/2b5a600a7b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Trello App</h1>
+    <div class="board">
+      <div class="tasks">
+        <p class="headding" >Tasks</p>
+        <div id="task_list" class="task_list"></div>
+          <div class="card addTask" id="add_task"><i class="fas fa-plus icon-btn"></i></div>
+
+      </div>
+      <div class=" tasks on_going" id="on_going_tasks">
+        <p class="headding">On Going Tasks</p>
+        <div id="on_going_task_list" class="task_list dropzone">
+          <div class="card">
+            <div class="card_top_sec">
+              <p class="card_title">Card title</p>
+              <div class="dropdown">
+                <i class="fas fa-ellipsis-v" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+                  onclick="event.stopPropagation();"></i>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <div class="delet-btn" onclick="deletCard(event)">
+                      &nbsp;<i class="fas fa-trash-alt i"></i>&nbsp; Suppression
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="card_body_sec">
+              <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+          <div class="card addTask" id="add_task"><i class="fas fa-plus icon-btn"></i></div>
+      </div>
+      <div class="completed tasks">
+        <p class="headding">Completed Tasks</p>
+        <div id="completed_task_list" class="task_list">
+          <div class="card" draggable="true">
+            <div class="card_top_sec">
+              <p class="card_title">Card title</p>
+              <div class="dropdown">
+                <i class="fas fa-ellipsis-v" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+                  onclick="event.stopPropagation();"></i>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <div class="delet-btn" onclick="deletCard(event)">
+                      &nbsp;<i class="fas fa-trash-alt i"></i>&nbsp; Suppression
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="card_body_sec">
+              <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+          <div class="card addTask" id="add_task"><i class="fas fa-plus icon-btn"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"> </script>
+</body>
+
+</html>
