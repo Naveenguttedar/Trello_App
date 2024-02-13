@@ -9,6 +9,7 @@
 body {
     background-color: #EBF0F7;
     font-family: 'Nunito', sans-serif;
+    width: 100%;
 }
 
 .container {
@@ -22,7 +23,7 @@ h1 {
 .board {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    /* align-items:center; */
+    position: relative;
     padding: 2rem 10rem;
     gap: 1.5rem;
 }
@@ -51,6 +52,7 @@ h1 {
 ul {
     list-style: none;
 }
+
 .task_list {
     list-style: none;
     margin-top: .8rem;
@@ -63,12 +65,13 @@ ul {
     padding: .9rem 1.5rem;
     /* cursor: pointer; */
     border: 1px solid rgba(0, 0, 0, .125);
-    border-radius:4px;
+    border-radius: 4px;
     background-color: white;
     box-shadow: rgb(99 99 99 / 10%) 0px 2px 8px 0px;
     margin-bottom: .5rem;
 }
-.draggable{
+
+.draggable {
     opacity: .5;
 }
 
@@ -79,19 +82,24 @@ ul {
 }
 
 .card_title {
+    width: max-content;
     font-weight: 400;
 }
 
 .dropdown {
     position: relative;
     width: max-content;
-    text-align:right;
+    text-align: right;
     z-index: 10;
     cursor: pointer;
     display: flex;
-    gap: .3rem; left:50%
+    gap: .3rem;
+    left: 50%
 }
-
+dialog{
+    width:100%;
+    
+}
 .dropdown-menu {
     position: relative;
     visibility: hidden;
@@ -101,17 +109,20 @@ ul {
     cursor: pointer;
     border: 1px solid rgba(0, 0, 0, .125);
     box-shadow: rgb(99 99 99 / 10%) 0px 2px 8px 0px;
-    transition: display,1s,ease-in-out;
+    transition: display, 1s, ease-in-out;
     border-radius: 3px;
 }
-.dropdown:active .dropdown-menu{
-    visibility:visible;
+
+.dropdown:active .dropdown-menu {
+    visibility: visible;
 }
-.dropdown:hover .dropdown-menu{
-    visibility:visible;
+
+.dropdown:hover .dropdown-menu {
+    visibility: visible;
 }
-.dropdown-menu:hover{
-    visibility:visible;
+
+.dropdown-menu:hover {
+    visibility: visible;
 }
 
 
@@ -120,24 +131,64 @@ ul {
     color: gray;
     font-size: 1rem;
 }
-.addTask{
-    color:grey;
-    text-align:center;
-    padding:.6rem;
+
+.addTask {
+    color: grey;
+    text-align: center;
+    padding: .6rem;
 }
 
 .dropzone {
-  background: transparent;
+    background: transparent;
 }
-.dragover::after{
-  content: '';
-  position:absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.473);
-  inset: 0;
-  z-index: 4;
+
+.dragover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.473);
+    inset: 0;
+    z-index: 4;
 }
+
 .dropzone.dragover {
-  background-color: purple;
+    background-color: purple;
 }
+
+:modal {
+    font-family: 'Nunito', sans-serif;
+    background-color: transparent;
+    width:100%;
+    height:100vh;
+    display: flex;
+    justify-items:center;
+    align-items:center;
+    border: none;
+}
+    
+
+form {
+    display: grid;
+    width: 400px;
+    margin: 0 auto;
+    align-items:center;
+    font-family: 'Nunito', sans-serif;
+    background-color: white;
+    padding: 1rem;
+    border-radius:8px;
+}
+input{
+    padding:.5rem;
+    margin-bottom:1rem;
+    width:100%;
+}
+textarea{
+    font-family: 'Nunito', sans-serif;
+    padding:.5rem;
+}
+#btn_submit{
+    margin-top: .5rem;
+    background: purple;
+}
+

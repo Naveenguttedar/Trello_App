@@ -4,6 +4,7 @@ const on_going_task = document.getElementById("on_going_tasks")
 const completed_tasks=document.getElementById("completed_tasks")
 const on_going_task_list = document.getElementById('on_going_task_list');
 const completed_task_list = document.getElementById('completed_task_list');
+const favDialog = document.getElementById('favDialog');
 const add_task_btn = document.getElementById('add_task');
 console.log(completed_tasks);
 let dumb_text = "Some quick example text to build on the card title and make up the bulk of the card's content."
@@ -11,17 +12,17 @@ let task_data = localStorage.getItem("task_data");
 let on_going_task_data = localStorage.getItem("on_going_task_data");
 let completed_task_data=localStorage.getItem("completed_task_data");
 if (task_data == null) {
-  task_data = [{ card_title: "card title 1", card_text: dumb_text }, { card_title: "card title 2", card_text: dumb_text }, { card_title: "card title 3", card_text: dumb_text }]
+  task_data = [{ card_title: "📚 Genre Exploration", card_text: " Read a chapter of a book from a genre you don't typically explore 📖." }, { card_title: "🧘 Mindful Moments", card_text: "Practice meditation for 15 minutes 🧘." }, { card_title: " 💬 Connection Quest", card_text: "Reach out to a friend or family member you haven't spoken to in a while and catch up 🗣️." }]
   localStorage.setItem("task_data", JSON.stringify(task_data));
 }
 task_data = JSON.parse(localStorage.getItem("task_data"));
 if (on_going_task_data == null){
-  on_going_task_data = [{ card_title: "card title 1", card_text: dumb_text }];
+  on_going_task_data = [{ card_title: "🏋️ Sweat Session", card_text: "Do a 30-minute workout session 💪." },{ card_title: "🎧 Podcast Pursuit:", card_text: "Listen to a podcast episode on a topic you're curious about 🎧." }];
   localStorage.setItem("on_going_task_data", JSON.stringify(on_going_task_data));
 }
 on_going_task_data = JSON.parse(localStorage.getItem("on_going_task_data"))
 if(completed_task_data==null){
-completed_task_data = [{ card_title: "card title 1", card_text: dumb_text }];
+completed_task_data = [{ card_title: "📝 Poetic Waves:", card_text:" Write a poem about the ocean" },{ card_title: "🍳 Culinary Adventure", card_text:"Try cooking a new recipe you've never attempted before." }];
   localStorage.setItem("completed_task_data", JSON.stringify(completed_task_data));
 }
 
@@ -101,6 +102,7 @@ add_task_btn.addEventListener('click', () => {
   localStorage.setItem("task_data", JSON.stringify(task_data));
   const card = makeCard("task", task_data.length-1,task_data[task_data.length-1]);
   task_list.appendChild(card);
+  favDialog.showModal();
 })
 
 // Drag&Drop functionlity
@@ -144,18 +146,14 @@ function onDrop(e,container_type, container_list) {
   e.target.classList.remove("dragover");
   e.preventDefault();
 }
-
-on_going_task.addEventListener('dragover', (e) => onDragover(e ))
-on_going_task.addEventListener('dragenter', (e) => onDragenter(e))
-on_going_task.addEventListener('dragleave', (e) => onDragleave(e))
-on_going_task.addEventListener('drop', (e) => onDrop(e,"on_going", on_going_task_list));
-console.log(completed_tasks)
-completed_tasks.addEventListener('dragover', (e) => onDragover(e))
-completed_tasks.addEventListener('dragenter', (e) => onDragenter(e))
-completed_tasks.addEventListener('dragleave', (e) => onDragleave(e))
-completed_tasks.addEventListener('drop', (e) => onDrop(e,"completed", completed_task_list))
-
-
+const dragHandler=(contianer,container_type,contianer_list)=>{
+contianer.addEventListener('dragover', (e) => onDragover(e ))
+contianer.addEventListener('dragenter', (e) => onDragenter(e))
+contianer.addEventListener('dragleave', (e) => onDragleave(e))
+contianer.addEventListener('drop', (e) => onDrop(e,container_type, contianer_list));
+}
+dragHandler(on_going_task,"on_going",on_going_task_list);
+dragHandler(completed_tasks,"completed",completed_task_list);
 
 
 
