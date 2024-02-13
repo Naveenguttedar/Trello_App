@@ -68,6 +68,9 @@ ul {
     box-shadow: rgb(99 99 99 / 10%) 0px 2px 8px 0px;
     margin-bottom: .5rem;
 }
+.draggable{
+    opacity: .5;
+}
 
 .card_top_sec {
     display: flex;
@@ -86,8 +89,7 @@ ul {
     z-index: 10;
     cursor: pointer;
     display: flex;
-    gap: .3rem;
-    left:50%
+    gap: .3rem; left:50%
 }
 
 .dropdown-menu {
